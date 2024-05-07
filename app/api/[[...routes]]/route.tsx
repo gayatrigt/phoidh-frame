@@ -10,7 +10,12 @@ import { createSystem } from 'frog/ui'
 import { abi } from "../../abi"
 // fonts.js
 import fs from 'fs'
-import path from 'path'
+import path, { join } from 'path'
+
+// import { readFile } from 'fs/promises';
+// const localFont = await readFile(process.cwd() + "/app/fonts/Geist-Regular.ttf");
+// console.log("🚀 ~ process.cwd() + ' / app / fonts / Geist - Regular.ttf':", process.cwd() + "/app/fonts/Geist-Regular.ttf")
+
 
 // export const fonts = [
 //   // Geist font family
@@ -22,13 +27,19 @@ import path from 'path'
 //   },
 // ];
 
-const { Text, Image, Heading } = createSystem()
+// const fontpath = join(process.cwd(), "app/fonts/Geist-Regular.ttf");
+// const fontData = fs.readFileSync(fontpath);
 
-export const {
-  // ...
-} = createSystem({
-  colors: {
-    text: '#ffffff',
+export const font = new Frog({
+  imageOptions: {
+    /* Other default options */
+    fonts: [
+      {
+        name: 'Jaro',
+        weight: 400,
+        source: 'google',
+      },
+    ],
   },
 })
 
@@ -111,16 +122,44 @@ app.frame('/bountytitle', (c) => {
   return c.res({
     action: '/bountydescription',
     image: (
-      <div style={{ display: "flex", flexDirection: 'column', justifyContent: "center", alignItems: "center", height: "100%" }}>
+      <div style={{
+        display: "flex", flexDirection: 'column',
+        justifyContent: "center", alignItems: "center", height: "100%"
+      }}>
         {simpleMessage}
-        <div style={{ fontSize: '48', fontWeight: 'bold' }}>
+        <div
+          style={{
+            color: 'white',
+            fontFamily: 'Jaro',
+            display: 'flex',
+            fontWeight: 400,
+            fontSize: 60,
+          }}
+        >
           Bounty Title
         </div>
-        <div style={{ fontSize: '32', width: '60%', textAlign: 'center' }}>
+        <div
+          style={{
+            color: 'white',
+            fontFamily: 'Jaro',
+            display: 'flex',
+            fontWeight: 400,
+            fontSize: 20,
+          }}
+        >
           Give your bounty a clear and concise title that accurately reflects the task or project you want to be completed (e.g., "FC Client like Discord ").
         </div>
       </div>
     ),
+    imageOptions: {
+      fonts: [
+        {
+          name: 'Jaro',
+          source: 'google',
+          style: 'normal',
+        },
+      ],
+    },
     intents: [
       <TextInput placeholder="Enter your Title..." />,
       <Button value="submit">Submit</Button>,
@@ -239,8 +278,6 @@ app.frame('/wallet', (c) => {
     }
   });
 
-  console.log({ state })
-
 
   return c.res({
     action: '/share',
@@ -268,7 +305,6 @@ app.frame('/share', (c) => {
   const { deriveState } = c;
 
   const state = deriveState();
-  console.log({ state })
 
   return c.res({
     action: '/',
@@ -287,7 +323,8 @@ app.frame('/share', (c) => {
       </div>
     ),
     intents: [
-      <Button value="share">Share</Button>,
+      <Button.Link href={`https://warpcast.com/~/compose?text=Hey%2C%20I%20just%20created%20a%20bounty%20on%20poidh%21
+      !&embeds[]=https://phoidh-frame.vercel.app/api//bounty/${c.transactionId}`}>Share</Button.Link>,
       <Button.Link href={`https://explorer.degen.tips/tx/${c.transactionId}`}> Check TxN </Button.Link>,
     ],
   })
@@ -305,6 +342,60 @@ app.transaction('/mint', (c) => {
     ],
     to: '0x2445BfFc6aB9EEc6C562f8D7EE325CddF1780814',
     value: parseEther(state.reward + "")
+  })
+})
+
+const convert = (rawValue: string) => {
+  try {
+    const result = (parseInt(rawValue) / 1000000000000000000).toString()
+    console.log("🚀 ~ convert ~ result:", result)
+    return result
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+app.frame('/bounty/:txHash', async (c) => {
+  const { deriveState, req } = c;
+
+  // get the txn hash
+  const txHash = c.req.param('txHash')
+  console.log("🚀 ~ app.frame ~ txHash:", txHash)
+
+  // get data from txn hash
+
+  const data = await fetch(`https://explorer.degen.tips/api/v2/transactions/${txHash}`, {
+    method: 'GET',
+    headers: {
+      'Accept': 'application/json'
+    }
+  })
+    .then(response => response.json())
+
+  console.log({ data: data.decoded_input.parameters })
+  const title = data.decoded_input.parameters.find((gayatri: any) => gayatri.name === 'name').value
+  const description = data.decoded_input.parameters.find((gayatri: any) => gayatri.name === 'description').value
+
+  const valueResult = convert(data.value)
+
+  // const title = data: data.decoded_input.parameters
+
+  return c.res({
+    action: '',
+    image: (
+      <div style={{ display: "flex", flexDirection: 'column', justifyContent: "center", alignItems: "center", height: "100%" }}>
+        {simpleMessage}
+        <div style={{ fontSize: '48', fontWeight: 'bold' }}>
+          {title}
+        </div>
+        <div style={{ fontSize: '32', width: '60%', textAlign: 'center' }}>
+          {description}
+        </div>
+        <div style={{ fontSize: '32', width: '60%', textAlign: 'center' }}>
+          {`Reward: $DEGEN ${valueResult}`}
+        </div>
+      </div>
+    )
   })
 })
 
