@@ -67,7 +67,7 @@ const { Heading } = createSystem({
 const simpleMessage = <div
   style={{
     alignItems: 'center',
-    backgroundImage: `url("${process.env.NEXT_PUBLIC_SITE_URL}/bg-poidh.png")`,
+    backgroundImage: `url("https://phoidh-frame.vercel.app/bg-poidh.png")`,
     backgroundSize: '100% 100%',
     display: 'flex',
     flexDirection: 'column',
