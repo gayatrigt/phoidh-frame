@@ -97,7 +97,7 @@ const simpleMessage = <div
     backgroundSize: "contain",
     position: "absolute",
     top: 0,
-    backgroundImage: `url( "https://phoidh-frame.vercel.app/logo-poidh.png")`,
+    backgroundImage: `url("https://phoidh-frame.vercel.app/logo-poidh.png")`,
   }}
   >
   </div>
@@ -146,7 +146,7 @@ app.frame('/bountytitle', (c) => {
             textAlign: 'center'
           }}
         >
-          give your bounty a clear and concise title that accurately reflects what you want to be done (e.g., “take a pic in a top hat”)
+          give your bounty a clear and concise title that accurately reflects what you want to be done
         </div>
       </div>
     ),
