@@ -478,6 +478,8 @@ app.frame('/bounty/:txHash', async (c) => {
   })
 })
 
+// commit
+
 devtools(app, { serveStatic })
 
 export const GET = handle(app)
