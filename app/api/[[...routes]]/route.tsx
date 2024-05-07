@@ -393,10 +393,30 @@ app.frame('/share', (c) => {
         >
           {state.title}
         </div>
-        <div style={{ fontSize: '32', width: '60%', textAlign: 'center' }}>
+        <div
+          style={{
+            color: 'white',
+            fontFamily: 'Jaro',
+            display: 'flex',
+            fontWeight: 400,
+            fontSize: 30,
+            width: 780,
+            textAlign: 'center'
+          }}
+        >
           {state.description}
         </div>
-        <div style={{ fontSize: '32', width: '60%', textAlign: 'center' }}>
+        <div
+          style={{
+            color: 'white',
+            fontFamily: 'Jaro',
+            display: 'flex',
+            fontWeight: 400,
+            fontSize: 30,
+            width: 780,
+            textAlign: 'center'
+          }}
+        >
           {`Reward: ${state.reward} `}
         </div>
       </div>
@@ -464,13 +484,41 @@ app.frame('/bounty/:txHash', async (c) => {
     image: (
       <div style={{ display: "flex", flexDirection: 'column', justifyContent: "center", alignItems: "center", height: "100%" }}>
         {simpleMessage}
-        <div style={{ fontSize: '48', fontWeight: 'bold' }}>
+        <div
+          style={{
+            color: 'white',
+            fontFamily: 'Jaro',
+            display: 'flex',
+            fontWeight: 400,
+            fontSize: 60,
+          }}
+        >
           {title}
         </div>
-        <div style={{ fontSize: '32', width: '60%', textAlign: 'center' }}>
+        <div
+          style={{
+            color: 'white',
+            fontFamily: 'Jaro',
+            display: 'flex',
+            fontWeight: 400,
+            fontSize: 30,
+            width: 780,
+            textAlign: 'center'
+          }}
+        >
           {description}
         </div>
-        <div style={{ fontSize: '32', width: '60%', textAlign: 'center' }}>
+        <div
+          style={{
+            color: 'white',
+            fontFamily: 'Jaro',
+            display: 'flex',
+            fontWeight: 400,
+            fontSize: 30,
+            width: 780,
+            textAlign: 'center'
+          }}
+        >
           {`Reward: $DEGEN ${valueResult}`}
         </div>
       </div>
