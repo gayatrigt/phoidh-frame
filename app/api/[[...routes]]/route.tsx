@@ -30,18 +30,18 @@ import path, { join } from 'path'
 // const fontpath = join(process.cwd(), "app/fonts/Geist-Regular.ttf");
 // const fontData = fs.readFileSync(fontpath);
 
-export const font = new Frog({
-  imageOptions: {
-    /* Other default options */
-    fonts: [
-      {
-        name: 'Jaro',
-        weight: 400,
-        source: 'google',
-      },
-    ],
-  },
-})
+// export const font = new Frog({
+//   imageOptions: {
+//     /* Other default options */
+//     fonts: [
+//       {
+//         name: 'Jaro',
+//         weight: 400,
+//         source: 'google',
+//       },
+//     ],
+//   },
+// })
 
 type State = {
   title: string
