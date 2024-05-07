@@ -8,27 +8,6 @@ import { handle } from 'frog/next'
 import { serveStatic } from 'frog/serve-static'
 import { createSystem } from 'frog/ui'
 import { abi } from "../../abi"
-// fonts.js
-import fs from 'fs'
-import path, { join } from 'path'
-
-// import { readFile } from 'fs/promises';
-// const localFont = await readFile(process.cwd() + "/app/fonts/Geist-Regular.ttf");
-// console.log("🚀 ~ process.cwd() + ' / app / fonts / Geist - Regular.ttf':", process.cwd() + "/app/fonts/Geist-Regular.ttf")
-
-
-// export const fonts = [
-//   // Geist font family
-//   {
-//     name: 'Geist',
-//     data: fs.readFileSync(path.join(__dirname, '../../fonts/Geist-Thin.ttf')),
-//     weight: 100,
-//     style: 'normal',
-//   },
-// ];
-
-// const fontpath = join(process.cwd(), "app/fonts/Geist-Regular.ttf");
-// const fontData = fs.readFileSync(fontpath);
 
 type State = {
   title: string
