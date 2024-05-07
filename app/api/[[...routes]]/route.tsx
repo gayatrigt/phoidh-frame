@@ -32,7 +32,7 @@ const app = new Frog<{ State: State }>({
     /* Other default options */
     fonts: [
       {
-        name: 'Jaro',
+        name: 'Inter',
         weight: 400,
         source: 'google',
       },
@@ -47,16 +47,16 @@ const app = new Frog<{ State: State }>({
 const { Heading } = createSystem({
   fonts: {
 
-    jaro: [
+    Inter: [
       {
-        name: 'Jaro',
+        name: 'Inter',
         weight: 400,
         source: 'google',
       },
     ],
     default: [
       {
-        name: 'Jaro',
+        name: 'Inter',
         weight: 400,
         source: 'google',
       },
@@ -67,7 +67,7 @@ const { Heading } = createSystem({
 const simpleMessage = <div
   style={{
     alignItems: 'center',
-    backgroundImage: `url("https://phoidh-frame.vercel.app/bg-poidh.png")`,
+    backgroundImage: `url("https://phoidh-frame.vercel.app//bg-poidh.png")`,
     backgroundSize: '100% 100%',
     display: 'flex',
     flexDirection: 'column',
@@ -97,7 +97,7 @@ const simpleMessage = <div
     backgroundSize: "contain",
     position: "absolute",
     top: 0,
-    backgroundImage: `url("https://phoidh-frame.vercel.app/logo-poidh.png")`,
+    backgroundImage: `url("https://phoidh-frame.vercel.app//logo-poidh.png")`,
   }}
   >
   </div>
@@ -106,7 +106,7 @@ const simpleMessage = <div
 app.frame('/', (c) => {
   return c.res({
     action: '/bountytitle',
-    image: "https://phoidh-frame.vercel.app/screen-1.png",
+    image: "https://phoidh-frame.vercel.app//screen-1.png",
     intents: [
       <Button value="start">Create a Bounty</Button>,
     ],
@@ -120,14 +120,14 @@ app.frame('/bountytitle', (c) => {
     image: (
       <div style={{
         display: "flex", flexDirection: 'column',
-        fontFamily: "Jaro",
+        fontFamily: "Inter",
         justifyContent: "center", alignItems: "center", height: "100%"
       }}>
         {simpleMessage}
         <div
           style={{
             color: 'white',
-            fontFamily: 'Jaro',
+            fontFamily: 'Inter',
             display: 'flex',
             fontWeight: 800,
             fontSize: 60,
@@ -138,7 +138,7 @@ app.frame('/bountytitle', (c) => {
         <div
           style={{
             color: 'white',
-            fontFamily: 'Jaro',
+            fontFamily: 'Inter',
             display: 'flex',
             fontWeight: 400,
             fontSize: 30,
@@ -153,7 +153,7 @@ app.frame('/bountytitle', (c) => {
     imageOptions: {
       fonts: [
         {
-          name: 'Jaro',
+          name: 'Inter',
           source: 'google',
           style: 'normal',
         },
@@ -187,9 +187,9 @@ app.frame('/bountydescription', (c) => {
         <div
           style={{
             color: 'white',
-            fontFamily: 'Jaro',
+            fontFamily: 'Inter',
             display: 'flex',
-            fontWeight: 400,
+            fontWeight: 800,
             fontSize: 60,
           }}
         >
@@ -198,7 +198,7 @@ app.frame('/bountydescription', (c) => {
         <div
           style={{
             color: 'white',
-            fontFamily: 'Jaro',
+            fontFamily: 'Inter',
             display: 'flex',
             fontWeight: 400,
             fontSize: 30,
@@ -238,9 +238,9 @@ app.frame('/bountyreward', (c) => {
         <div
           style={{
             color: 'white',
-            fontFamily: 'Jaro',
+            fontFamily: 'Inter',
             display: 'flex',
-            fontWeight: 400,
+            fontWeight: 800,
             fontSize: 60,
           }}
         >
@@ -249,7 +249,7 @@ app.frame('/bountyreward', (c) => {
         <div
           style={{
             color: 'white',
-            fontFamily: 'Jaro',
+            fontFamily: 'Inter',
             display: 'flex',
             fontWeight: 400,
             fontSize: 30,
@@ -289,9 +289,9 @@ app.frame('/bountytype', (c) => {
         <div
           style={{
             color: 'white',
-            fontFamily: 'Jaro',
+            fontFamily: 'Inter',
             display: 'flex',
-            fontWeight: 400,
+            fontWeight: 800,
             fontSize: 60,
           }}
         >
@@ -300,7 +300,7 @@ app.frame('/bountytype', (c) => {
         <div
           style={{
             color: 'white',
-            fontFamily: 'Jaro',
+            fontFamily: 'Inter',
             display: 'flex',
             fontWeight: 400,
             fontSize: 30,
@@ -313,7 +313,7 @@ app.frame('/bountytype', (c) => {
         <div
           style={{
             color: 'white',
-            fontFamily: 'Jaro',
+            fontFamily: 'Inter',
             display: 'flex',
             fontWeight: 400,
             fontSize: 30,
@@ -350,9 +350,9 @@ app.frame('/wallet', (c) => {
         <div
           style={{
             color: 'white',
-            fontFamily: 'Jaro',
+            fontFamily: 'Inter',
             display: 'flex',
-            fontWeight: 400,
+            fontWeight: 800,
             fontSize: 60,
           }}
         >
@@ -385,9 +385,9 @@ app.frame('/share', (c) => {
         <div
           style={{
             color: 'white',
-            fontFamily: 'Jaro',
+            fontFamily: 'Inter',
             display: 'flex',
-            fontWeight: 400,
+            fontWeight: 800,
             fontSize: 60,
           }}
         >
@@ -396,7 +396,7 @@ app.frame('/share', (c) => {
         <div
           style={{
             color: 'white',
-            fontFamily: 'Jaro',
+            fontFamily: 'Inter',
             display: 'flex',
             fontWeight: 400,
             fontSize: 30,
@@ -409,7 +409,7 @@ app.frame('/share', (c) => {
         <div
           style={{
             color: 'white',
-            fontFamily: 'Jaro',
+            fontFamily: 'Inter',
             display: 'flex',
             fontWeight: 400,
             fontSize: 30,
@@ -423,7 +423,7 @@ app.frame('/share', (c) => {
     ),
     intents: [
       <Button.Link href={`https://warpcast.com/~/compose?text=Hey%2C%20I%20just%20created%20a%20bounty%20on%20poidh%21
-      !&embeds[]=https://phoidh-frame.vercel.app/api//bounty/${c.transactionId}`}>Share</Button.Link>,
+      !&embeds[]=https://phoidh-frame.vercel.app//api//bounty/${c.transactionId}`}>Share</Button.Link>,
       <Button.Link href={`https://explorer.degen.tips/tx/${c.transactionId}`}> Check TxN </Button.Link>,
     ],
   })
@@ -487,9 +487,9 @@ app.frame('/bounty/:txHash', async (c) => {
         <div
           style={{
             color: 'white',
-            fontFamily: 'Jaro',
+            fontFamily: 'Inter',
             display: 'flex',
-            fontWeight: 400,
+            fontWeight: 800,
             fontSize: 60,
           }}
         >
@@ -498,7 +498,7 @@ app.frame('/bounty/:txHash', async (c) => {
         <div
           style={{
             color: 'white',
-            fontFamily: 'Jaro',
+            fontFamily: 'Inter',
             display: 'flex',
             fontWeight: 400,
             fontSize: 30,
@@ -511,7 +511,7 @@ app.frame('/bounty/:txHash', async (c) => {
         <div
           style={{
             color: 'white',
-            fontFamily: 'Jaro',
+            fontFamily: 'Inter',
             display: 'flex',
             fontWeight: 400,
             fontSize: 30,
