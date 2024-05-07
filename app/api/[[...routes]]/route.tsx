@@ -60,7 +60,7 @@ const app = new Frog<{ State: State }>({
 const simpleMessage = <div
   style={{
     alignItems: 'center',
-    backgroundImage: 'url("http://localhost:3000/bg-poidh.png")',
+    backgroundImage: `url("${process.env.NEXT_PUBLIC_SITE_URL}/bg-poidh.png")`,
     backgroundSize: '100% 100%',
     display: 'flex',
     flexDirection: 'column',
@@ -90,7 +90,7 @@ const simpleMessage = <div
     backgroundSize: "contain",
     position: "absolute",
     top: 0,
-    backgroundImage: "url('http://localhost:3000/logo-poidh.png')",
+    backgroundImage: `url("${process.env.NEXT_PUBLIC_SITE_URL}/logo-poidh.png")`,
   }}
   >
   </div>
@@ -99,7 +99,7 @@ const simpleMessage = <div
 app.frame('/', (c) => {
   return c.res({
     action: '/bountytitle',
-    image: 'http://localhost:3000/screen-1.png',
+    image: `${process.env.NEXT_PUBLIC_SITE_URL}/screen-1.png`,
     intents: [
       <Button value="start">Create a Bounty</Button>,
     ],
