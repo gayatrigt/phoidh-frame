@@ -30,19 +30,6 @@ import path, { join } from 'path'
 // const fontpath = join(process.cwd(), "app/fonts/Geist-Regular.ttf");
 // const fontData = fs.readFileSync(fontpath);
 
-// export const font = new Frog({
-//   imageOptions: {
-//     /* Other default options */
-//     fonts: [
-//       {
-//         name: 'Jaro',
-//         weight: 400,
-//         source: 'google',
-//       },
-//     ],
-//   },
-// })
-
 type State = {
   title: string
   description: string
@@ -60,13 +47,43 @@ const app = new Frog<{ State: State }>({
     type: "",
     reward: 0,
     bountyType: ""
-  }
+  },
+
+  imageOptions: {
+    /* Other default options */
+    fonts: [
+      {
+        name: 'Jaro',
+        weight: 400,
+        source: 'google',
+      },
+    ],
+  },
   // Supply a Hub to enable frame verification.
   // hub: neynar({ apiKey: 'NEYNAR_FROG_FM' })
 })
 
 // Uncomment to use Edge Runtime
 // export const runtime = 'edge'
+const { Heading } = createSystem({
+  fonts: {
+
+    jaro: [
+      {
+        name: 'Jaro',
+        weight: 400,
+        source: 'google',
+      },
+    ],
+    default: [
+      {
+        name: 'Jaro',
+        weight: 400,
+        source: 'google',
+      },
+    ],
+  },
+})
 
 const simpleMessage = <div
   style={{
@@ -124,6 +141,7 @@ app.frame('/bountytitle', (c) => {
     image: (
       <div style={{
         display: "flex", flexDirection: 'column',
+        fontFamily: "Jaro",
         justifyContent: "center", alignItems: "center", height: "100%"
       }}>
         {simpleMessage}
@@ -132,11 +150,11 @@ app.frame('/bountytitle', (c) => {
             color: 'white',
             fontFamily: 'Jaro',
             display: 'flex',
-            fontWeight: 400,
+            fontWeight: 800,
             fontSize: 60,
           }}
         >
-          Bounty Title
+          bounty title
         </div>
         <div
           style={{
@@ -144,10 +162,12 @@ app.frame('/bountytitle', (c) => {
             fontFamily: 'Jaro',
             display: 'flex',
             fontWeight: 400,
-            fontSize: 20,
+            fontSize: 30,
+            width: 780,
+            textAlign: 'center'
           }}
         >
-          Give your bounty a clear and concise title that accurately reflects the task or project you want to be completed (e.g., "FC Client like Discord ").
+          give your bounty a clear and concise title that accurately reflects what you want to be done (e.g., “take a pic in a top hat”)
         </div>
       </div>
     ),
@@ -185,11 +205,29 @@ app.frame('/bountydescription', (c) => {
     image: (
       <div style={{ display: "flex", flexDirection: 'column', justifyContent: "center", alignItems: "center", height: "100%" }}>
         {simpleMessage}
-        <div style={{ fontSize: '48', fontWeight: 'bold' }}>
-          Bounty Description
+        <div
+          style={{
+            color: 'white',
+            fontFamily: 'Jaro',
+            display: 'flex',
+            fontWeight: 400,
+            fontSize: 60,
+          }}
+        >
+          bounty description
         </div>
-        <div style={{ fontSize: '32', width: '60%', textAlign: 'center' }}>
-          Provide a detailed description of the bounty, including any specific requirements, guidelines, or expectations. Be as clear as possible to attract the right contributors and ensure successful completion.
+        <div
+          style={{
+            color: 'white',
+            fontFamily: 'Jaro',
+            display: 'flex',
+            fontWeight: 400,
+            fontSize: 30,
+            width: 780,
+            textAlign: 'center'
+          }}
+        >
+          provide a detailed description of the bounty, including any specific requirements, guidelines, or expectations - be as clear as possible to attract the right participants to ensure successful completion
         </div>
       </div>
     ),
@@ -218,11 +256,29 @@ app.frame('/bountyreward', (c) => {
     image: (
       <div style={{ display: "flex", flexDirection: 'column', justifyContent: "center", alignItems: "center", height: "100%" }}>
         {simpleMessage}
-        <div style={{ fontSize: '48', fontWeight: 'bold' }}>
-          Reward Amount
+        <div
+          style={{
+            color: 'white',
+            fontFamily: 'Jaro',
+            display: 'flex',
+            fontWeight: 400,
+            fontSize: 60,
+          }}
+        >
+          reward amount
         </div>
-        <div style={{ fontSize: '32', width: '60%', textAlign: 'center' }}>
-          Specify the reward amount you are offering in DEGEN. poidh ensures secure and transparent transactions through the power of smart contracts.
+        <div
+          style={{
+            color: 'white',
+            fontFamily: 'Jaro',
+            display: 'flex',
+            fontWeight: 400,
+            fontSize: 30,
+            width: 780,
+            textAlign: 'center'
+          }}
+        >
+          specify the reward amount you are offering in DEGEN (please note, the poidh smart contract will deduct a 2.5% fee for all completed bounties)
         </div>
       </div>
     ),
@@ -251,14 +307,42 @@ app.frame('/bountytype', (c) => {
     image: (
       <div style={{ display: "flex", flexDirection: 'column', justifyContent: "center", alignItems: "center", height: "100%" }}>
         {simpleMessage}
-        <div style={{ fontSize: '48', fontWeight: 'bold' }}>
-          Solo or Open bounty
+        <div
+          style={{
+            color: 'white',
+            fontFamily: 'Jaro',
+            display: 'flex',
+            fontWeight: 400,
+            fontSize: 60,
+          }}
+        >
+          solo or open bounty
         </div>
-        <div style={{ fontSize: '32', width: '60%', textAlign: 'center' }}>
-          Solo Bounty: You are the sole creator and have full control over the bounty funds.
+        <div
+          style={{
+            color: 'white',
+            fontFamily: 'Jaro',
+            display: 'flex',
+            fontWeight: 400,
+            fontSize: 30,
+            width: 780,
+            textAlign: 'center'
+          }}
+        >
+          solo bounty: you are the sole creator and have full control over the bounty funds
         </div>
-        <div style={{ fontSize: '32', width: '60%', textAlign: 'center' }}>
-          Open Bounty: Harness the power of the community by allowing anyone to contribute additional funds to the bounty, increasing the reward pool and attracting more talented contributors.
+        <div
+          style={{
+            color: 'white',
+            fontFamily: 'Jaro',
+            display: 'flex',
+            fontWeight: 400,
+            fontSize: 30,
+            width: 780,
+            textAlign: 'center'
+          }}
+        >
+          open bounty: harness the power of the community by allowing anyone to contribute additional funds to the bounty, increasing the reward pool and attracting more talented contributors
         </div>
       </div>
     ),
@@ -284,8 +368,16 @@ app.frame('/wallet', (c) => {
     image: (
       <div style={{ display: "flex", flexDirection: 'column', justifyContent: "center", alignItems: "center", height: "100%" }}>
         {simpleMessage}
-        <div style={{ fontSize: '48', fontWeight: 'bold' }}>
-          Connect Wallet to Confirm the Bounty
+        <div
+          style={{
+            color: 'white',
+            fontFamily: 'Jaro',
+            display: 'flex',
+            fontWeight: 400,
+            fontSize: 60,
+          }}
+        >
+          connect wallet to confirm the bounty
         </div>
         {/* <div style={{ fontSize: '32', width: '60%', textAlign: 'center' }}>
           Solo Bounty: You are the sole creator and have full control over the bounty funds.
@@ -311,7 +403,15 @@ app.frame('/share', (c) => {
     image: (
       <div style={{ display: "flex", flexDirection: 'column', justifyContent: "center", alignItems: "center", height: "100%" }}>
         {simpleMessage}
-        <div style={{ fontSize: '48', fontWeight: 'bold' }}>
+        <div
+          style={{
+            color: 'white',
+            fontFamily: 'Jaro',
+            display: 'flex',
+            fontWeight: 400,
+            fontSize: 60,
+          }}
+        >
           {state.title}
         </div>
         <div style={{ fontSize: '32', width: '60%', textAlign: 'center' }}>
