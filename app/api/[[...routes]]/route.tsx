@@ -97,7 +97,7 @@ const simpleMessage = <div
     backgroundSize: "contain",
     position: "absolute",
     top: 0,
-    backgroundImage: `url("${process.env.NEXT_PUBLIC_SITE_URL}/logo-poidh.png")`,
+    backgroundImage: `url( "https://phoidh-frame.vercel.app/logo-poidh.png")`,
   }}
   >
   </div>
@@ -106,7 +106,7 @@ const simpleMessage = <div
 app.frame('/', (c) => {
   return c.res({
     action: '/bountytitle',
-    image: `${process.env.NEXT_PUBLIC_SITE_URL}/screen-1.png`,
+    image: "https://phoidh-frame.vercel.app/screen-1.png",
     intents: [
       <Button value="start">Create a Bounty</Button>,
     ],
